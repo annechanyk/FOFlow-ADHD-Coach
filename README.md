@@ -25,7 +25,13 @@ ADHD affects at least 120 million children and hundreds of millions of adults wo
 
 ## Project Screenshots
 
-
+![Dashboard](./screenshots/dashboard.png)
+![Task Planner](./screenshots/task-breakdown.png)
+![Focus Timer](./screenshots/pomodoro-timer.png)
+![Progress Report](./screenshots/progress.png)
+![Brain Dump](./screenshots/braindump.png)
+![Export Data](./screenshots/export-data.png)
+![Share with Healthcare Providers](./screenshots/data-sharing.png)
 
 
 
