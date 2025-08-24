@@ -3,9 +3,7 @@
 
 ## Overview
 
-FOFlow is an innovative, AI-enhanced productivity coach designed specifically to assist adults with ADHD in managing their daily tasks, improving focus, and tracking progress through evidence-based, neurodivergent-friendly features.
-
-This project was developed to capture and analyze medical data related to neurological conditions.
+FOFlow is an innovative, AI-enhanced productivity coach designed specifically to assist adults with ADHD in managing their daily tasks, improving focus, and tracking progress through evidence-based, neurodivergent-friendly features. This project was developed to capture and analyze medical data related to neurological conditions.
 
 ## Problem Statement
 
