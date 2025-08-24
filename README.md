@@ -1,61 +1,79 @@
- # FocusFlow ADHD Coach - NeuraViaHacks 2025
 
-An innovative ADHD management application that helps users improve focus, manage tasks, and build sustainable routines through AI-powered personalized guidance.
+# FOFlow: Personalized ADHD Productivity and Focus Coach
 
-## Hackathon Alignment
+## Overview
 
-**NeuraViaHacks Theme:** Capturing Medical Data for Interactive Software
-- **Detect:** Pattern recognition in task completion and focus behaviors
-- **Connect:** User-friendly interface bridging patients and productivity tools  
-- **Personalize:** AI-driven task breakdown and personalized recommendations
+FOFlow is an innovative, AI-enhanced productivity coach designed specifically to assist adults with ADHD in managing their daily tasks, improving focus, and tracking progress through evidence-based, neurodivergent-friendly features.
 
-## Features (In Development)
+This project was developed to capture and analyze medical data related to neurological conditions.
 
-### Phase 1: Foundation
-- ADHD-friendly UI design with calming colors
-- Responsive dashboard layout
-- Accessibility features
-- Professional visual structure
+## Problem Statement
 
-### Phase 2: Core Functionality (Next)
-- Interactive task management
-- Gamification system with points and levels
-- Navigation between app sections
-- Data persistence
+ADHD affects at least 120 million children and hundreds of millions of adults worldwide. Traditional productivity apps fail to address executive dysfunction, time blindness, and motivation challenges specific to ADHD brains. FOFlow bridges this gap with specialized tools and medical data integration.
 
-### Phase 3: AI Features (Planned)
-- AI-powered task breakdown
-- Focus timer with ADHD-specific features
-- Pattern recognition and insights
+## Key Features
 
-### Phase 4: Advanced Features (Planned)
-- Progress tracking with charts
-- Brain dump quick capture
-- Achievement system
+- **Healthcare Data Export & Sharing:** Generates comprehensive reports that can be exported and shared securely with healthcare providers. Transforms user data into medically relevant metrics.
+- **AI-Powered Personalized Task Breakdown:** Uses AI to help users break down complex tasks into manageable steps. Personalized achievement system that responds to user engagement.
+- **ADHD-Optimized Pomodoro Timer:** Supports focused work sessions with visual countdown, built-in encouragement and break suggestions.
+- **Motivational Rewards:** Gamification elements with dopamine-friendly rewards with badges, points, and streaks to promote productivity.
+- **Brain Dump Capture:** Instant thought capture with tagging and organization to reduce cognitive overload.
+- **Progress Analytics for Pattern Recognition:** Visualizes weekly productivity and focus trends with easy-to-understand charts. Tracks productivity patterns and identifies optimal focus windows.
+- **Accessibility and Responsive Design:** Fully functional across desktop and mobile with attention to accessibility.
 
-## Tech Stack
 
-- **Frontend:** HTML5, CSS3, Vanilla JavaScript
-- **Charts:** Chart.js
-- **Storage:** LocalStorage
-- **Design:** Mobile-first responsive design
-- **Accessibility:** WCAG compliant
 
-## Getting Started
+## Project Screenshots
 
-1. Clone repository
-2. Open `index.html` in VS Code
-3. Use Live Server extension to run locally
-4. Open in browser at `http://127.0.0.1:5500`
+![Dashboard](./screenshots/dashboard.png)
+![Task Planner](./screenshots/task-breakdown.png)
+![Focus Timer](./screenshots/pomodoro-timer.png)
+![Progress Report](./screenshots/progress.png)
+![Brain Dump](./screenshots/braindump.png)
+![Export Data](./screenshots/export-data.png)
+![Share with Healthcare Providers](./screenshots/data-sharing.png)
 
-## Current Progress
 
-- [x] Phase 1: Foundation & Static UI (100%)
-- [ ] Phase 2: Core Functionality (0%)
-- [ ] Phase 3: AI Features & Timer (0%)  
-- [ ] Phase 4: Data Visualization & Polish (0%)
-- [ ] Phase 5: Documentation & Submission (0%)
 
----
+## Start Managing ADHD
+- Create and break down tasks using AI assistance
+- Track focus sessions with the Pomodoro timer
+- Monitor progress through analytics dashboard
+- Export data to share with healthcare providers
 
-*Built with ❤️ for NeuraViaHacks 2025*
+
+
+## Healthcare Provider Benefits
+- **Clinical Data Export:** Generate comprehensive reports showing task completion rates, focus patterns, and behavioral trends
+- **Treatment Insights:** Objective data on medication effectiveness, therapy progress, and lifestyle interventions
+- **Patient Engagement:** Visual progress tracking encourages treatment adherence
+
+
+
+## Technology Stack
+
+- HTML5, CSS3 (modern, responsive design with ADHD-friendly colors)
+- JavaScript (app logic, AI integration)
+- Chart.js for data visualization
+
+
+
+## Future Enhancements
+- Real OpenAI API integration for advanced task analysis
+- Cloud database with multi-device synchronization
+- Integration with wearables for physiological data
+- Clinical trial partnerships for validation studies
+
+
+
+## How to Run
+
+1. Clone the repository.
+2. Open `index.html` in a modern web browser.
+3. Try managing your tasks to improve focus!
+
+
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
