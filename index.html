@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FoFlow ADHD Coach - NeuraViaHacks 2025</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://kit.fontawesome.com/bf4893cb0b.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="header-content">
+                <h1 class="app-title"><span class="Fo">F<i class="fa-regular fa-face-smile-wink"></i></span><span>Flow ADHD Coach</span></h1>
+                <div class="user-info">
+                    <span class="points">1,247 Focus Points</span>
+                    <span class="level">Level 12: Focus Master</span>
+                    <div class="streak">5-day streak</div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Navigation -->
+        <nav class="nav-tabs">
+            <button class="nav-tab active" data-tab="dashboard" style="font-family: Inherit;">
+                Dashboard
+            </button>
+            <button class="nav-tab" data-tab="planner" style="font-family: Inherit;">
+                Task Planner
+            </button>
+            <button class="nav-tab" data-tab="timer" style="font-family: Inherit;">
+                Focus Timer
+            </button>
+            <button class="nav-tab" data-tab="progress" style="font-family: Inherit;">
+                Progress
+            </button>
+            <button class="nav-tab" data-tab="braindump" style="font-family: Inherit;">
+                Brain Dump
+            </button>
+        </nav>
+
+        <!-- Healthcare Actions -->
+        <div class="healthcare-actions">
+            <button class="btn-healthcare export-btn" onclick="exportUserData()">
+                <i class="fa-solid fa-download"></i>
+                Export Data
+            </button>
+            <button class="btn-healthcare share-btn" onclick="shareWithProvider()">
+                <i class="fa-solid fa-share-medical"></i>
+                Share with Healthcare Provider
+            </button>
+        </div>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Dashboard View -->
+            <section id="dashboard" class="view active">
+                <div class="dashboard-grid">
+                    <!-- Welcome Card -->
+                    <div class="welcome-card card">
+                        <div class="welcome-header">
+                            <div class="welcome-text">
+                                <h3>Welcome Back!</h3>
+                                <p>You're crushing it with a <strong>5-day streak</strong>! Let's keep the momentum going.</p>
+                            </div>
+                            <div class="datetime-display">
+                                <div class="current-time" id="current-time">12:34 PM</div>
+                                <div class="current-date" id="current-date">Sunday, Aug 24</div>
+                            </div>
+                        </div>
+                        <div class="level-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 75%;"></div>
+                            </div>
+                            <span class="progress-text">250 points to Level 13</span>
+                        </div>
+                    </div>
+
+                    <!-- Today's Priorities -->
+                    <div class="priorities-card card">
+                        <div class="card-header-with-link">
+                            <h3>Today's Priorities</h3>
+                            <button class="view-all-btn" onclick="switchToTab('planner')">
+                                Manage
+                            </button>
+                        </div>
+                        <div class="priority-list" id="priority-tasks">
+                            <!-- Dynamic content will be populated here -->
+                        </div>
+                        <button class="btn-primary add-task-btn" onclick="switchToTab('planner')">Add Priority Task</button>
+                    </div>
+
+                    <!-- Quick Stats -->
+                    <div class="stats-card card">
+                        <div class="card-header-with-link">
+                            <h3>Today's Stats</h3>
+                            <button class="view-all-btn" onclick="switchToTab('progress')">
+                                Details
+                            </button>
+                        </div>
+                        <div class="stats-grid">
+                            <div class="stat-item">
+                                <span class="stat-number">3</span>
+                                <span class="stat-label">Tasks Done</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">2</span>
+                                <span class="stat-label">Focus Sessions</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">1.5h</span>
+                                <span class="stat-label">Focus Time</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Achievements -->
+                    <div class="achievements-card card">
+                        <div class="card-header-with-link">
+                            <h3>Achievements</h3>
+                            <button class="view-all-btn" onclick="switchToTab('progress')">
+                                View All
+                            </button>
+                        </div>
+                        <div class="achievements-grid" id="achievements-display">
+                            <!-- Dynamic content will be populated here -->
+                        </div>
+                    </div>
+
+                    <!-- Quick Actions -->
+                    <div class="quick-actions-card card">
+                        <h3>Quick Actions</h3>
+                        <div class="action-buttons">
+                            <button class="btn-action focus-btn">Start Focus Session</button>
+                            <button class="btn-action break-btn">Take a Break</button>
+                            <button class="btn-action dump-btn">Brain Dump</button>
+                            <button class="btn-action quick-task-btn">Quick Add Task</button>
+                            <button class="btn-action progress-btn">View Progress</button>
+                            <button class="btn-action goals-btn">Review Goals</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Task Planner View -->
+            <section id="planner" class="view">
+                <div class="planner-container">
+                    <!-- AI Task Breakdown Section -->
+                    <div class="task-breakdown-section card">
+                        <div class="card-header">
+                            <h3><i class="fa-solid fa-magic-wand-sparkles"></i> AI Task Breakdown</h3>
+                            <p>Break down complex tasks into manageable, actionable steps</p>
+                        </div>
+                        <div class="breakdown-input-section">
+                            <div class="input-group">
+                                <textarea 
+                                    id="complex-task" 
+                                    placeholder="Enter a complex task (e.g., 'Prepare for job interview', 'Write research paper')"
+                                    rows="3"
+                                    class="task-input"
+                                ></textarea>
+                                <button class="btn-primary breakdown-btn" onclick="breakdownTask()">
+                                    <i class="fa-solid fa-magic-wand-sparkles"></i>
+                                    Break Down Task
+                                </button>
+                            </div>
+                        </div>
+                        <div id="breakdown-result" class="breakdown-results hidden">
+                            <!-- Breakdown results will be populated here -->
+                        </div>
+                    </div>
+
+                    <!-- Weekly Calendar Section -->
+                    <div class="weekly-calendar-section card">
+                        <div class="card-header">
+                            <h3><i class="fa-solid fa-calendar-week"></i> Weekly Task Calendar</h3>
+                            <p>View and organize your tasks across the week</p>
+                        </div>
+                        <div id="weekly-calendar" class="weekly-calendar">
+                            <!-- Calendar will be populated here -->
+                        </div>
+                    </div>
+
+                    <!-- Task Management Section -->
+                    <div class="task-management-section card">
+                        <div class="card-header">
+                            <div class="task-management-header">
+                                <div>
+                                    <h3><i class="fa-solid fa-list-check"></i> Task Management</h3>
+                                    <p>Organize, filter, and manage all your tasks</p>
+                                </div>
+                                <button class="btn-primary add-task-modal-btn" onclick="showAddTaskModal()">
+                                    <i class="fa-solid fa-plus"></i>
+                                    Add New Task
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Task Filters -->
+                        <div class="task-filters">
+                            <button class="filter-btn active" data-category="all">
+                                <i class="fa-solid fa-list"></i> All Tasks
+                            </button>
+                            <button class="filter-btn" data-category="Work">
+                                <i class="fa-solid fa-briefcase"></i> Work
+                            </button>
+                            <button class="filter-btn" data-category="Personal">
+                                <i class="fa-solid fa-user"></i> Personal
+                            </button>
+                            <button class="filter-btn" data-category="Health">
+                                <i class="fa-solid fa-heart"></i> Health
+                            </button>
+                            <button class="filter-btn" data-category="Learning">
+                                <i class="fa-solid fa-graduation-cap"></i> Learning
+                            </button>
+                        </div>
+
+                        <!-- Task List -->
+                        <div id="all-tasks" class="task-list">
+                            <!-- Tasks will be populated here -->
+                        </div>
+                    </div>
+
+                    <!-- Add Task Modal -->
+                    <div id="add-task-modal" class="modal hidden">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h3><i class="fa-solid fa-plus-circle"></i> Add New Task</h3>
+                                <button class="close-modal" onclick="closeAddTaskModal()">
+                                    <i class="fa-solid fa-times"></i>
+                                </button>
+                            </div>
+                            <form id="add-task-form" onsubmit="addNewTask(event)">
+                                <div class="form-group">
+                                    <label for="task-title">Task Title *</label>
+                                    <input type="text" id="task-title" name="title" required 
+                                           placeholder="Enter task title">
+                                </div>
+                                
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="task-category">Category</label>
+                                        <select id="task-category" name="category">
+                                            <option value="Work">Work</option>
+                                            <option value="Personal">Personal</option>
+                                            <option value="Health">Health</option>
+                                            <option value="Learning">Learning</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="task-day">Day</label>
+                                        <select id="task-day" name="day">
+                                            <option value="Monday">Monday</option>
+                                            <option value="Tuesday">Tuesday</option>
+                                            <option value="Wednesday">Wednesday</option>
+                                            <option value="Thursday">Thursday</option>
+                                            <option value="Friday">Friday</option>
+                                            <option value="Saturday">Saturday</option>
+                                            <option value="Sunday">Sunday</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="task-time">Estimated Time (minutes)</label>
+                                        <input type="number" id="task-time" name="estimatedTime" 
+                                               min="5" max="480" value="30">
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="task-priority">Priority</label>
+                                        <select id="task-priority" name="priority">
+                                            <option value="1">Low (★)</option>
+                                            <option value="2" selected>Medium (★★)</option>
+                                            <option value="3">High (★★★)</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                
+                                <div class="modal-actions">
+                                    <button type="button" class="btn-secondary" onclick="closeAddTaskModal()">
+                                        Cancel
+                                    </button>
+                                    <button type="submit" class="btn-primary">
+                                        <i class="fa-solid fa-plus"></i>
+                                        Add Task
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Healthcare Sharing Modal -->
+                    <div id="healthcare-sharing-modal" class="modal hidden">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h3><i class="fa-solid fa-share-medical"></i> Share with Healthcare Provider</h3>
+                                <button class="close-modal" onclick="closeHealthcareSharingModal()">
+                                    <i class="fa-solid fa-times"></i>
+                                </button>
+                            </div>
+                            
+                            <div class="healthcare-report-preview">
+                                <div class="report-header">
+                                    <h4><i class="fa-solid fa-file-medical"></i> Healthcare Summary Report</h4>
+                                    <p>Generated on <span id="report-date"></span></p>
+                                </div>
+                                
+                                <div id="healthcare-report-content" class="report-content">
+                                    <!-- Report content will be populated here -->
+                                </div>
+                            </div>
+                            
+                            <div class="sharing-options">
+                                <h4><i class="fa-solid fa-share"></i> Sharing Options</h4>
+                                <div class="sharing-buttons">
+                                    <button class="btn-sharing copy-btn" onclick="copyReportToClipboard()">
+                                        <i class="fa-solid fa-copy"></i>
+                                        Copy to Clipboard
+                                    </button>
+                                    <button class="btn-sharing pdf-btn" onclick="generatePDFReport()">
+                                        <i class="fa-solid fa-file-pdf"></i>
+                                        Generate PDF
+                                    </button>
+                                    <button class="btn-sharing email-btn" onclick="shareViaEmail()">
+                                        <i class="fa-solid fa-envelope"></i>
+                                        Share via Email
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div class="modal-actions">
+                                <button type="button" class="btn-secondary" onclick="closeHealthcareSharingModal()">
+                                    Close
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Focus Timer View -->
+            <section id="timer" class="view">
+                <div class="timer-container">
+                    <!-- Task Selection Panel -->
+                    <div class="task-selection-panel card">
+                        <div class="card-header">
+                            <h3><i class="fa-solid fa-bullseye"></i> Select Focus Task</h3>
+                            <p>Choose a task from your list to start a focused work session</p>
+                        </div>
+                        <div id="focus-task-list" class="focus-task-list">
+                            <!-- Task list will be populated here -->
+                        </div>
+                        <div class="selected-task-info">
+                            <div class="current-task">
+                                <strong>Selected Task:</strong> 
+                                <span id="focus-task-name">No task selected</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Timer Display -->
+                    <div class="timer-display-panel card">
+                        <div class="card-header">
+                            <h3><i class="fa-solid fa-stopwatch"></i> Pomodoro Timer</h3>
+                            <p>25-minute focused work sessions</p>
+                        </div>
+                        
+                        <!-- Circular Timer Display -->
+                        <div class="timer-circle-container">
+                            <svg class="timer-circle" width="200" height="200">
+                                <circle cx="100" cy="100" r="90" 
+                                        fill="none" 
+                                        stroke="var(--light-gray)" 
+                                        stroke-width="8"/>
+                                <circle id="progress-circle" 
+                                        cx="100" cy="100" r="90" 
+                                        fill="none" 
+                                        stroke="var(--primary-purple)" 
+                                        stroke-width="8"
+                                        stroke-linecap="round"
+                                        stroke-dasharray="565.48"
+                                        stroke-dashoffset="565.48"
+                                        transform="rotate(-90 100 100)"/>
+                            </svg>
+                            <div class="timer-display">
+                                <span id="timer-minutes">25</span>:<span id="timer-seconds">00</span>
+                            </div>
+                        </div>
+
+                        <!-- Timer Controls -->
+                        <div class="timer-controls">
+                            <button id="timer-start" class="btn-primary timer-btn" onclick="startTimer()">
+                                <i class="fa-solid fa-play"></i>
+                                Start Focus
+                            </button>
+                            <button id="timer-pause" class="btn-secondary timer-btn hidden" onclick="pauseTimer()">
+                                <i class="fa-solid fa-pause"></i>
+                                Pause
+                            </button>
+                            <button id="timer-reset" class="btn-secondary timer-btn" onclick="resetTimer()">
+                                <i class="fa-solid fa-rotate-left"></i>
+                                Reset
+                            </button>
+                        </div>
+
+                        <!-- Session Statistics -->
+                        <div class="session-info">
+                            <div class="session-stat">
+                                <span class="stat-label"><i class="fa-solid fa-clock"></i> Today's Sessions:</span>
+                                <span id="pomodoro-count" class="stat-value">2</span>
+                            </div>
+                            <div class="session-stat">
+                                <span class="stat-label"><i class="fa-solid fa-bullseye"></i> Current Task:</span>
+                                <span id="current-focus-task" class="stat-value">No task selected</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Progress Tracking View -->
+            <section id="progress" class="view">
+                <div class="progress-container">
+                    <!-- Weekly Progress Chart -->
+                    <div class="progress-chart-section card">
+                        <div class="card-header">
+                            <h3><i class="fa-solid fa-chart-line"></i> Weekly Progress Analytics</h3>
+                            <p>Track your productivity trends and performance over time</p>
+                        </div>
+                        <div class="chart-container">
+                            <canvas id="weekly-chart" width="400" height="200"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- Productivity Trends Chart -->
+                    <div class="trends-chart-section card">
+                        <div class="card-header">
+                            <h3><i class="fa-solid fa-chart-area"></i> Productivity Trends</h3>
+                            <p>Visualize your focus efficiency and task completion patterns</p>
+                        </div>
+                        <div class="chart-container">
+                            <canvas id="trends-chart" width="400" height="200"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- Achievement Showcase -->
+                    <div class="achievement-showcase-section card">
+                        <div class="card-header">
+                            <h3><i class="fa-solid fa-trophy"></i> Achievement Gallery</h3>
+                            <p>Your productivity milestones and accomplishments</p>
+                        </div>
+                        <div id="achievement-showcase" class="achievement-showcase">
+                            <!-- Achievements will be populated here -->
+                        </div>
+                    </div>
+
+                    <!-- Focus Analytics -->
+                    <div class="focus-analytics-section card">
+                        <div class="card-header">
+                            <h3><i class="fa-solid fa-brain"></i> Focus Analytics</h3>
+                            <p>Deep insights into your focus patterns and productivity metrics</p>
+                        </div>
+                        <div id="focus-analytics" class="focus-analytics">
+                            <!-- Focus analytics will be populated here -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Brain Dump View -->
+            <section id="braindump" class="view">
+                <div class="braindump-container">
+                    <!-- Brain Dump Input Section -->
+                    <div class="brain-dump-input-section card">
+                        <div class="card-header">
+                            <h3><i class="fa-solid fa-brain"></i> Quick Thought Capture</h3>
+                            <p>Capture fleeting thoughts, ideas, and reminders instantly</p>
+                        </div>
+                        
+                        <div class="dump-input-area">
+                            <textarea 
+                                id="brain-dump-text" 
+                                placeholder="What's on your mind? Dump it here..."
+                                rows="4"
+                                class="dump-textarea"
+                            ></textarea>
+                            
+                            <div class="dump-input-footer">
+                                <input 
+                                    type="text" 
+                                    id="thought-tags" 
+                                    placeholder="#tags #ideas #reminders"
+                                    class="tag-input"
+                                >
+                                <button class="btn-primary dump-save-btn" onclick="saveBrainDump()">
+                                    <i class="fa-solid fa-save"></i>
+                                    Save Thought
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Brain Dump Entries Section -->
+                    <div class="brain-dump-entries-section card">
+                        <div class="entries-header">
+                            <h3><i class="fa-solid fa-lightbulb"></i> Thought Collection</h3>
+                            <input 
+                                type="text" 
+                                id="search-thoughts" 
+                                placeholder="Search your thoughts..."
+                                class="search-input"
+                            >
+                        </div>
+                        
+                        <div id="brain-dump-entries" class="dump-entries">
+                            <!-- Entries will be populated here -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
