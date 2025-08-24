@@ -47,7 +47,7 @@ ADHD affects at least 120 million children and hundreds of millions of adults wo
 - **Clinical Data Export:** Generate comprehensive reports showing task completion rates, focus patterns, and behavioral trends
 - **Treatment Insights:** Objective data on medication effectiveness, therapy progress, and lifestyle interventions
 - **Patient Engagement:** Visual progress tracking encourages treatment adherence
-
+  
 
 
 ## Technology Stack
